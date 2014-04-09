@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Console Log Demo in an iframe...</title>
+    <script>
+    	var globalBroncos = {
+    		name: "Denver Broncos",
+    		owner: "Pat Bowlen",
+    		found: "1960",
+    		homeStadium:{
+    			name: "Sports Authority Field",
+    			address: {
+					street: "1701 Mile High Stadium Circle",
+					city: "Denver",
+					state: "Colorado", 
+					zip: "80204-1701 " 
+    			}
+    		},
+    		toString: function() { return ""; } 
+    	};
+
+    	window.addEventListener("DOMContentLoaded", function () {
+    		var logMeObject = document.getElementById("logMeObject");
+    		logMeObject.addEventListener("click", function(){
+    			console.log(globalBroncos);
+    		});
+
+    		var logMeString = document.getElementById("logMeString");
+    		logMeString.addEventListener("click", function(){
+    			console.log("Team %s play at %s", globalBroncos.name, globalBroncos.homeStadium.name, globalBroncos);
+    		});
+
+            var localAutoComplete = document.getElementById("localAutoComplete");
+            localAutoComplete.addEventListener("click", function(){
+                var myLocalVar = new Array(10);
+                var myDoc = document;
+
+                debugger;
+            });
+    		
+    	});
+    </script>
+    <style>
+    
+    </style>
+</head>
+<body>
+    <h3>Hello from an iframe</h3>
+	<button id="logMeObject">Log me an object!</button>
+	<button id="logMeString">Log me a formatted string!</button>
+    <button id="localAutoComplete">autocomplete at a breakpoint</button>
+</body>
+</html>

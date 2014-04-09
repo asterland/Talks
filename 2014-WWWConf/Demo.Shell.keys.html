@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+    <title>F12 - The IE Developer Tools - Shell</title>
+    <link rel="stylesheet" href="Demo.css" />
+    <script src="jquery-1.11.0.min.js"></script>
+    <script>
+        (function () {
+            $(window).ready(function(){;
+
+                $("#break").click( function(){
+                    debugger;
+                });
+            });
+        })();
+    </script>
+</head>
+
+<body>
+    <button id="break">Break!</button>
+</body>
+</html>

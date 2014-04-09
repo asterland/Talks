@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+    <title>F12 - The IE Developer Tools - Debugger</title>
+    <link rel="stylesheet" href="Demo.css" />
+    <script src="jquery-1.11.0.min.js"></script>
+    <script src="someOtherLibrary.js"></script>
+    <script>
+        (function () {
+            $(window).ready(function(){
+                $("#out").css({
+                    "width": "300px",
+                    "height": "100px"
+                }).hide();
+
+                $("#stepThroughJMC").click( function(){
+                    $("#out")
+                    .show()
+                    .css({
+                        "color": "#FFF",
+                        "background-color": "#000"
+                    });
+
+                    var luckyNumber = magic.getNumber() / 2;
+                    var msg = "your lucky number is: " + luckyNumber; 
+
+                    $("#out").text(msg);
+                });
+
+                $("#caughtException").click( function(){
+                    try{
+                        var x = null;
+                        x.myBad();
+                    } catch (exception){
+                        console && console.error("Oops")
+                    }
+                });
+            });
+        })();
+    </script>
+</head>
+
+<body>
+    <button id="stepThroughJMC">JMC stepping</button>
+    <br />
+    <br />
+    <button id="caughtException">First chance exception</button>
+    <br />
+    <br />
+    <br />
+    <div id="out"></div>
+</body>
+</html>

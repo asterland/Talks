@@ -1,0 +1,12 @@
+.callout{
+	width: 300px;
+}
+
+.callout h4{
+	text-decoration: underline;
+	font-size: 1em;
+}
+
+.callout p{
+	font-size: 0.5em;
+}

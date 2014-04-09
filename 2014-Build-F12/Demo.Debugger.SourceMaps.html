@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+    <title>F12 - The IE Developer Tools - Debugger</title>
+    <link rel="stylesheet" href="Demo.css" />
+    <script>
+        (function () {
+            document.addEventListener("DOMContentLoaded", function (){
+                var evalMe = document.getElementById("evalMe");
+                    evalMe.addEventListener("click", function(){
+                    var stringToEval = "for(var x = 1; x < 10; x++){ /* somePlointless adding */} debugger; ";
+                    var sourceUrlString = "\n//# sourceURL=pointless.js";
+                    eval(stringToEval + sourceUrlString);
+                });
+            });            
+        })();
+    </script>
+    <script src="TypeScript/simple.js"></script>
+</head>
+
+<body>
+    <button id="hiFromTs">Hi from TypeScript</button>
+    <br />
+    <br />
+    <a href="http://localhost:9093/chapters/ch2/index.html" target="_blank">Complex TypeScript site</a>
+    <br />
+    <br />
+    <a href="http://oridomi.com/" target="_blank">Run, CoffeeScript, Run.</a>
+    <div id="output"></div>
+    <br />
+    <br />
+    <button id="evalMe">eval me</button>
+    <br />
+    <br />
+</body>
+</html>

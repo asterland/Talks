@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "helloworld.js",
+  "sourceRoot": "",
+  "sources": [
+    "helloworld.cs"
+  ],
+  "names": [],
+  "mappings": ";AAAA;CAAA,KAAA;;CAAA,CAAM;CACQ,EAAA,CAAA,YAAC;CACb,EAAQ,CAAP,EAAD,IAAA;CADD,IAAa;;CAAb;;CADD;;CAAA,CAIA,CAA8C,KAAtC,CAAsC,OAA9C,EAAA;CACC,GAAA,IAAA;CAAA,EAAW,CAAX,EAAW;CACF,EAAuC,CAAc,IAAtD,GAAR,GAAA;CAFD,EAA8C;CAJ9C"
+}

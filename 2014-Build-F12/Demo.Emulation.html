@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+	<head>
+		<title>F12 - The IE Developer Tools - Emulation</title>
+		<style>
+			
+
+		</style>
+		<link rel="stylesheet" href="Demo.css" />
+
+        <script>            
+            (function () {
+                document.addEventListener("DOMContentLoaded", function () {
+                    if (document.documentMode == 10) {
+                        var out = document.getElementById("out");
+                        out.textContent = "Be warned the document mode emulation isn't perfect and isn't a replacement for the real thing (virtual or not)."
+                    }
+                });
+            })();
+        </script>
+	</head>
+
+	<body>
+        <div id="out">
+            Toggle, it go on...
+        </div>
+	</body>
+</html>

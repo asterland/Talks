@@ -1,0 +1,292 @@
+﻿<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>F12 - The IE Developer Tools</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+		<link rel="stylesheet" href="revealJS/css/reveal.min.css" />
+		<link rel="stylesheet" href="revealJS/css/theme/default.css" id="theme"/>
+        
+		<style>
+			.browserLogo{
+				background: none !important;
+				border: none !important;
+				box-shadow: none !important;
+			}
+
+			.sublist li{
+				font-size: 0.5em !important;
+				height: 2em !important;
+				margin: 0;
+				padding: 0;
+			}
+
+			.footnote {
+				font-size: normal !important;
+				position: absolute !important;
+				bottom: 0 !important;
+				left: 20px !important;
+			}
+
+			.demoContainer{
+				margin-top: 80px !important;
+				display: -ms-flexbox;
+				-ms-flex-direction: horizontal;
+			}
+
+			.demoMarkup{
+				text-align: left;
+			}
+
+			.demoPoints{
+				text-align: right;
+			}
+
+			.demoFrame {
+				width: 400px;
+				height: 400px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+				<section>
+                    <h2>IE11’s Developer Tools</h2>
+					<br />					
+					<br/>
+					<img class="browserLogo" src="resources/IEandF12.png"/>
+					<br />
+					<br />
+					<h2>Just got nicer (again)</h2>
+					<br />
+					<br />
+					<h3><a href="mailto:andy.sterland@microsoft.com">Andy Sterland</a> | <a href="http://microsoft.com/ie">Microsoft</a></h3>
+					<h4><a href="http://twitter.com/">@AndySterland</a> | <a href="mailto:andy.sterland@microsoft.com">andy.sterland@microsoft.com</a></h4>
+				</section>
+
+				<section>
+					<h2>Intro</h2>
+					<ul>
+						<li>I'm Andy (@AndySterland) 
+									<ul class="sublist">
+										<li><span style="font-style: italic">/me wave<span></li></ul>
+						</li>
+						<li>Major updates to F12 in the 4/8 update to IE11</li>
+						<li>Today you’re going on a tour of the new features in F12</li>
+						<li>Also going to show how to debug IE on Windows Phone using Visual Studio</li>
+						<li>Tweet #F12Tools, @IEDevChat or me </li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Debugger - Just My Code</h2>
+					<div class="demoContainer">
+						<div class="demoMarkup">
+							<iframe class="demoFrame" src="Demo.Debugger.JMC.html"></iframe>
+						</div>
+						<div class="demoPoints">
+							<ul>
+								<li>Step only in your own code</li>
+								<li>Break in caught exceptions in your code only</li>
+								<li>Break next in your code</li>
+								<li>Mark your files:<ul class="sublist">
+									<li>File picker, tab header, MyCode.json</li>
+								</ul>
+							</ul>
+						</div>
+					</div>
+				</section>			
+
+				<section>
+					<h2>Debugger - Source Maps</h2>
+					<div class="demoContainer">
+						<div class="demoMarkup">
+							<iframe class="demoFrame" src="Demo.Debugger.SourceMaps.html"></iframe>
+						</div>
+						<div class="demoPoints">
+							<ul>
+								<li>F12 now supports the Source Maps v3 spec!
+									<ul class="sublist">
+										<li>Syntax highlighting for TypeScript, CoffeeScript and Script #</li>
+										<li>Dynamically enable and disable</li>
+									</ul>
+								</li>
+								<li>Support for //# sourceURL to label eval code</li>
+							</ul>
+						</div>
+					</div>
+				</section>	
+			
+				<section>
+					<h2>Never forget!</h2>
+					<div class="demoContainer">
+						<ul>
+							<li>The debugger keeps track of your state so when you close F12 it's the same when you bring it back up</li>
+							<li>Watches, breakpoints, open files, pretty printed files, source map and JMC settings</li>
+						</ul>
+					</div>
+				</section>
+
+				<section>
+					<h2>Shortcut Keys - Pro Tip</h2>
+					<div class="demoContainer">
+						<div class="demoMarkup">
+							<iframe class="demoFrame" src="Demo.Shell.Keys.html"></iframe>
+						</div>
+						<div class="demoPoints">
+							<ul> 
+								<li>When broken in the debugger use <strong>ctrl + shift + F5</strong> to abort and refresh the page</li>
+						<li>Move between tools with <strong>ctrl + [</strong> or <strong>ctrl + ]</strong></li>
+						<li>Don't forget <strong>ctrl + #</strong> to jump to a tool (e.g. DOM Explorer is ctrl + 1)</li>
+							</ul>
+						</div>
+					</div>
+				</section>			
+				
+				<section>
+					<h2>Console - Logging</h2>
+					<div class="demoContainer">
+						<div class="demoMarkup">
+							<iframe class="demoFrame" src="Demo.Console.html"></iframe>
+						</div>
+						<div class="demoPoints">
+							<ul>
+								<li>console.log logs objects</li>
+								<li>console.log includes printf style string formatting</li>
+								<li>Errors can be logged before F12 is open</li>
+							</ul>
+						</div>
+					</div>
+				</section>		
+				
+				<section>
+					<h2>Console - Execution</h2>
+					<div class="demoContainer">
+						<ul>
+							<li>Easy way to pick iframes to execute against</li>
+							<li>New console cmd $_ for last expression</li>
+							<li>Auto complete now includes locals</li>
+						</ul>
+					</div>
+				</section>	
+
+
+				<section>
+					<h2>Memory</h2>
+					<div class="demoContainer">
+						<div class="demoMarkup">
+							<iframe class="demoFrame" src="Demo.MemoryProfiler.html"></iframe>
+						</div>
+						<div class="demoPoints">
+							<ul>
+								<li>New workflow for scenarios where you need to identify "left over" objects
+									<ul>
+										<li>New scope filter</li>
+									</ul>
+								</li>
+								<li>Other improvements
+									<ul>
+										<li>Function source nav</li>
+										<li>Gridlines</li>
+										<li>Additional settings options</li>
+										<li>Show in dominators</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</section>				
+
+				<section>
+					<h2>Profiling - UI</h2>
+					<div>(Will demo in Phone Demo)</div>
+					<ul>
+						<li>New filters for background and network activity</li>
+						<li>Scope to events</li>
+					</ul>
+				</section>	
+
+				<section>
+					<h2>DOM Explorer - Changebars</h2>
+					<div class="demoContainer">
+						<div class="demoMarkup">
+							<iframe class="demoFrame" src="Demo.DOMExplorer.changebars.html"></iframe>
+						</div>
+						<div class="demoPoints">
+							<ul>
+								<li>Keep track of all the CSS changes you make through the tools</li>
+								<li>New "Changes" tab show all the changes</li>
+								<li>Revert the item back to it's original state</li>
+							</ul>
+						</div>
+					</div>
+				</section>				
+
+				<section>
+					<h2>DOM Explorer - Pseudo States</h2>
+					<div class="demoContainer">
+						<div class="demoMarkup">
+							<iframe class="demoFrame" src="Demo.DOMExplorer.pseudo.html"></iframe>
+						</div>
+						<div class="demoPoints">
+							<ul>
+								<li>Support for forcing :hover and :visited</li>
+								<li>Like all of the DOM Explorer the feature is also in VS for Store Apps</li>
+							</ul>
+						</div>
+					</div>
+				</section>			
+
+				<section>
+					<h2>Windows Phone 8.1 Phone Debugging</h2>
+					<br />					
+					<br/>
+					<img class="browserLogo" src="resources/PhoneIE.png"/>
+					<div>Full stack of Visual Studio tools for HTML/JS are now enabled for IE11 on Windows Phone 8.1 in Visual Studio 2012 Update 2</div>
+				</section>	
+
+				<section>
+					<h2>Summary</h2>
+					<br />
+					<ul>
+						<li>New F12 features in the Windows update for Win7 and Win8.1 in the 4/8 Windows Update</li>
+						<li>Debugging IE on Windows Phone 8.1 (device &amp; emulator)</li>
+					</ul>
+					<br />
+					<br />
+					<br />
+                    <h4><a href="http://twitter.com/">@AndySterland</a></h4>
+                    <h4><a href="mailto:andy.sterland@microsoft.com">andy.sterland@microsoft.com</a></h4>
+					<h4><a target="_blank" href="http://aka.ms/F12Tools">aka.ms/F12Tools</a></h4>
+					<br />
+					<h2>Questions?</h2>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="revealJS/lib/js/head.min.js"></script>
+		<script src="revealJS/js/reveal.min.js"></script>
+
+		<script>
+
+			Reveal.initialize({
+				transition: 'linear',
+				progress: true,
+				history: true,
+				overview: true
+			});
+
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+	<head>
+		<title>F12 - The IE Developer Tools - Console</title>
+		<style>
+			
+		</style>
+		<link rel="stylesheet" href="Demo.css" />
+		<script>
+	        (function () {
+	            function isPrime(numberToTest) {
+	                var testResult;
+	                if (numberToTest == 1 || numberToTest == 2) {
+	                    testResult = true;
+	                }
+
+	                for (var i = numberToTest - 1; i > 1; i--) {
+	                    if (numberToTest % i == 0) {
+	                        testResult = false;
+	                    }
+	                }
+
+	                return testResult;
+	            }
+
+	            function getRandomWholeNumber(min, max) {
+	                return Math.floor(Math.random() * (max - min + 1) + min);
+	            }
+
+	            document.addEventListener("DOMContentLoaded", function(){
+		            var time = document.getElementById("time");
+	                time.addEventListener("click", function () {
+	                	var primeCanidate = 1234567;
+	                    console.time("Prime of " + primeCanidate);
+	                    isPrime(primeCanidate);
+	                    console.timeEnd("Prime of " + primeCanidate);
+	                });
+
+		            var timeNested = document.getElementById("timeNested");
+	                timeNested.addEventListener("click", function () {
+	                	console.time("Two prime");
+	                	var primeCanidate = 1234567;
+	                    console.time("Prime of " + primeCanidate);
+	                    isPrime(primeCanidate);
+	                    console.timeEnd("Prime of " + primeCanidate);
+	                    primeCanidate = 123456;
+	                    console.time("Prime of " + primeCanidate);
+	                    isPrime(primeCanidate);
+	                    console.timeEnd("Prime of " + primeCanidate);
+	                	console.timeEnd("Two prime");
+	                });
+
+		            var time = document.getElementById("time");
+	                time.addEventListener("click", function () {
+	                	performance.mark("Prime number time");
+	                	var primeCanidate = 1234567;
+	                    isPrime(primeCanidate);
+	                });
+
+					window.arrayOfStrings = [];
+					window.arrayOfImg = [];
+		            var takeHeapSnapshot = document.getElementById("takeHeapSnapshot");
+	                takeHeapSnapshot.addEventListener("click", function () {
+	                	for(var i = 0; i < 1000; i++){
+	                		window.arrayOfStrings.push("SomeLongStringThatYouWouldNotNormallyUse");
+	                	}
+	                	var img = document.createElement("img");
+	                	img.setAttribute("src", "resources/PhoneIE.png");
+	                	window.arrayOfImg.push(img);
+	                	console.takeHeapSnapshot();
+	                });
+
+                });
+	        })();
+		</script>
+	</head>
+
+	<body>		
+	    <button id="time">console.time/timeEnd</button>
+	    <br />
+	    <button id="timeNested">nested console.time/timeEnd</button>
+	    <br />
+	    <button id="perfMark">performance.mark</button>
+	    <br />
+	    <button id="takeHeapSnapshot">console.takeHeapSnapshot</button>
+	    <br />
+	</body>
+</html>

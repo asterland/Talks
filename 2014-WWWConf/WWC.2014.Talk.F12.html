@@ -1,0 +1,333 @@
+﻿<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>F12 - The IE Developer Tools</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+		<link rel="stylesheet" href="revealJS/css/reveal.min.css" />
+		<link rel="stylesheet" href="revealJS/css/theme/default.css" id="theme"/>
+        
+		<style>
+			.browserLogo{
+				background: none !important;
+				border: none !important;
+				box-shadow: none !important;
+			}
+
+			.sublist li{
+				font-size: 0.5em !important;
+				height: 2em !important;
+				margin: 0;
+				padding: 0;
+			}
+
+			.footnote {
+				font-size: normal !important;
+				position: absolute !important;
+				bottom: 0 !important;
+				left: 20px !important;
+			}
+
+			.demoContainer{
+				margin-top: 80px !important;
+				display: -ms-flexbox;
+				-ms-flex-direction: horizontal;
+			}
+
+			.demoMarkup{
+				text-align: left;
+			}
+
+			.demoPoints{
+				text-align: right;
+			}
+
+			.demoFrame {
+				width: 400px;
+				height: 400px;
+			}
+
+			.ieLogo{
+				position: fixed;
+				top: 10px;
+				right: 10px;
+				width: 129px;
+				height: 40px;
+				background: none !important;
+				border: none !important;
+				box-shadow: none !important;
+
+			}
+
+			.newLogo{
+				position: fixed;
+				top: 60px;
+				right: 10px;
+				width: 129px;
+				height: 80px;
+				background: none !important;
+				border: none !important;
+				box-shadow: none !important;
+
+			}
+		</style>
+	</head>
+
+	<body>
+
+
+		<div class="reveal">
+
+			<div class="slides">
+				<section>
+                    <h2>IE11’s Developer Tools</h2>
+					<br />	
+					<img class="browserLogo" src="resources/IEandF12.png"/>
+					<br />
+					<h2>Top tips &amp; tricks for debugging the web with IE</h2>
+					<br />
+					<h3><a href="mailto:andy.sterland@microsoft.com">Andy Sterland</a> | <a href="http://microsoft.com/ie">Microsoft</a></h3>
+					<h4><a href="http://twitter.com/">@AndySterland</a> | <a href="mailto:andy.sterland@microsoft.com">andy.sterland@microsoft.com</a></h4>
+				</section>
+
+				<section>
+					<h2>Intro</h2>
+					<ul>
+						<li>I'm Andy (@AndySterland) a Program Manager on F12 at Microsoft in Redmond USA</li>
+						<li>This talk will focus on quick tips to make debugging easier</li>
+						<li>Tweet #F12Tools, @IEDevChat or me </li>
+					</ul>
+					<img class="ieLogo" src="resources/iecornerlogo.png"/>
+				</section>
+
+
+				<section>
+					<h2>Tip #0: Update IE</h2>
+					<h4>Keep IE up to date with Windows Update</h4>
+					<ul>
+						<li>Typically contain security fixes and high impacting bugs</li>
+						<li>For the first time the April 8th update will include features
+							<ul class="sublist">
+								<li>Also known as Windows 8.1 Update 1 but applies to IE11 on Win7 as well</li>
+								<li>Lots of new F12 features</li>
+							</ul>
+						</li>
+						<li>In this talk if you see "new" in the corner then the feature was added in the April 8th update</li>
+					</ul>
+					<img class="ieLogo" src="resources/iecornerlogo.png"/>
+
+				</section>			
+		
+
+				<section>
+					<h2>Tip #1: Just My Code</h2>
+					<h4>Never debug 3rd party code</h4>
+					<div class="demoContainer">
+						<div class="demoMarkup">
+							<iframe class="demoFrame" src="Demo.Debugger.JMC.html"></iframe>
+						</div>
+						<div class="demoPoints">
+							<ul>
+								<li>Step only in your own code</li>
+								<li>Break in caught exceptions in your code only</li>
+								<li>Break next in your code</li>
+								<li>Mark your files:<ul class="sublist">
+									<li>File picker, tab header, MyCode.json</li>
+								</ul>
+							</ul>
+						</div>
+					</div>
+					<img class="ieLogo" src="resources/iecornerlogo.png"/>
+					<img class="newLogo" src="resources/new.png"/>
+				</section>	
+
+				<section>
+					<h2>Tip #2: Source Maps</h2>
+					<h4>Using a minifier or language like TypeScript? Build source maps to make debugging easier</h4>
+					<div class="demoContainer">
+						<div class="demoMarkup">
+							<iframe class="demoFrame" src="Demo.Debugger.SourceMaps.html"></iframe>
+						</div>
+						<div class="demoPoints">
+							<ul>
+								<li>F12 now supports the Source Maps v3 spec!
+									<ul class="sublist">
+										<li>Syntax highlighting for TypeScript, CoffeeScript and Script #</li>
+										<li>Dynamically enable and disable</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<img class="ieLogo" src="resources/iecornerlogo.png"/>
+					<img class="newLogo" src="resources/new.png"/>
+				</section>	
+
+
+				<section>
+					<h2>Tip #3: TracePoints</h2>
+					<h4>Instrument code without having to redeploy it</h4>
+					<div class="demoContainer">
+						<div class="demoMarkup">
+							<iframe class="demoFrame" src="Demo.Debugger.TracePoints.html"></iframe>
+						</div>
+						<div class="demoPoints">
+							<ul>
+								<li>Work like breakpoints but log to the console</li>
+								<li>Log strings, objects and inspect in the console</li>
+								<li>Access to locals</li>
+							</ul>
+						</div>
+					</div>
+					<img class="ieLogo" src="resources/iecornerlogo.png"/>
+				</section>	
+
+
+				<section>
+					<h2>Tip #4: Never miss a console message</h2>
+					<h4>Turn on "Always record console messages"</h4>
+					<img class="browserLogo" src="resources/inetcpl-console.png"/>
+					<div>Internet Options -> Advanced -> Browsing -> Always Record Console Messages (check)</div>
+					<a href="Demo.console.broken.html" target="_blank">(broken site)</a>
+					<img class="ieLogo" src="resources/iecornerlogo.png"/>
+					<img class="newLogo" src="resources/new.png"/>
+				</section>
+
+				<section>
+					<h2>Tip #5: Keyboard shortcuts</h2>
+					<h4>Be more productive by using the keyboard</h4>
+					<div class="demoContainer">
+						<div class="demoMarkup">
+							<iframe class="demoFrame" src="Demo.Shell.Keys.html"></iframe>
+						</div>
+						<div class="demoPoints">
+							<ul> 
+								<li>When broken in the debugger use <strong>ctrl + shift + F5</strong> to abort and refresh the page</li>
+								<li>Move between tools with <strong>ctrl + [</strong> or <strong>ctrl + ]</strong></li>
+								<li>Don't forget <strong>ctrl + #</strong> to jump to a tool (e.g. DOM Explorer is ctrl + 1)</li>
+							</ul>
+						</div>
+					</div>
+					<img class="ieLogo" src="resources/iecornerlogo.png"/>
+					<img class="newLogo" src="resources/new.png"/>
+				</section>	
+				
+				<section>
+					<h2>Tip #6: Changebars</h2>
+					<h4>Keep track of changes for F12</h4>
+					<div class="demoContainer">
+						<div class="demoMarkup">
+							<iframe class="demoFrame" src="Demo.DOMExplorer.changebars.html"></iframe>
+						</div>
+						<div class="demoPoints">
+							<ul>
+								<li>Keep track of all the CSS changes you make through the tools</li>
+								<li>New "Changes" tab show all the changes</li>
+								<li>Revert the item back to it's original state</li>
+							</ul>
+						</div>
+					</div>
+					<img class="ieLogo" src="resources/iecornerlogo.png"/>
+					<img class="newLogo" src="resources/new.png"/>
+				</section>	
+
+				<section>
+					<h2>Tip #7: Heads Up Display</h2>
+					<h3>Monitor performance in real time</h3>
+					<br />
+					<img class="browserLogo" src="resources/ctrlshiftu.png"/>
+					<br />
+					<br/>
+					<h3>(ctrl + shift + u)</h3>
+					<a href="http://www.cnn.com" target="_blank">(slow site)</a>
+					<img class="ieLogo" src="resources/iecornerlogo.png"/>
+				</section>
+
+				<section>
+					<h2>Tip #8: Instrument Your Code</h2>
+					<h3>Use the console.* API to </h3>
+					<br />
+					
+					<div class="demoContainer">
+						<div class="demoMarkup">
+							<iframe class="demoFrame" src="Demo.Console.instrument.html"></iframe>
+						</div>
+						<div class="demoPoints">
+							<ul>
+								<li>console.time/timeEnd - to quickly time scenarios</li>
+								<li>performance.mark - to delineate scenarios in the profiler</li>
+								<li>console.takeHeapSnapshot - to take a snapshot</li>
+							</ul>
+						</div>
+					</div>
+					<img class="ieLogo" src="resources/iecornerlogo.png"/>
+				</section>
+
+				<section>
+					<h2>Tip #9: Enterprise Mode</h2>
+					<h3>Update IE and keep your internal sites running</h3>
+					<br />
+					<img  src="resources/enterprisemode.png"/>
+					<ul>
+						<li>Runs sites in an IE8 emulation mode 
+							<ul class="sublist">
+								<li>Document mode at IE8</li>
+								<li>ActiveX enabled</li>
+								<li>Old JavaScript engine</li>
+								<li>A number of security improvements are disabled</li>
+							</ul>
+						</li>
+						<li>The sites that run in this mode are configurable via XML and group policy
+							<ul class="sublist">
+								<li>Use the Enterprise Mode Site List Manager tool to configure XML</li>
+								<li>More on <a href="http://technet.microsoft.com/library/dn640687.aspx" target="_blank">TechNet</a></li>
+							</ul>
+						</li>
+					</ul>
+					<img class="ieLogo" src="resources/iecornerlogo.png"/>
+					<img class="newLogo" src="resources/new.png"/>
+				</section>
+
+
+				<section>
+					<h2>Summary</h2>
+					<br />
+					<ul>
+						<li>Lots of tips &amp; tricks covered today</li>
+						<li>Top tip is to please update IE11 :)</li>
+					</ul>
+					<br />
+					<br />
+					<br />
+                    <h4><a href="http://twitter.com/">@AndySterland</a></h4>
+                    <h4><a href="mailto:andy.sterland@microsoft.com">andy.sterland@microsoft.com</a></h4>
+					<h4><a target="_blank" href="http://aka.ms/F12Tools">aka.ms/F12Tools</a></h4>
+					<br />
+					<h2>Questions?</h2>
+					<img class="ieLogo" src="resources/iecornerlogo.png"/>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="revealJS/lib/js/head.min.js"></script>
+		<script src="revealJS/js/reveal.min.js"></script>
+
+		<script>
+
+			Reveal.initialize({
+				transition: 'linear',
+				progress: true,
+				history: true,
+				overview: true
+			});
+
+		</script>
+
+	</body>
+</html>

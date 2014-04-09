@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Console Log</title>
+    <script>
+    	var globalBroncos = {
+    		name: "Denver Broncos",
+    		owner: "Pat Bowlen",
+    		found: "1960",
+    		homeStadium:{
+    			name: "Sports Authority Field",
+    			address: {
+					street: "1701 Mile High Stadium Circle",
+					city: "Denver",
+					state: "Colorado", 
+					zip: "80204-1701 " 
+    			}
+    		},
+    		toString: function() { return "this is a toString of an object"; } 
+    	};
+
+    	window.addEventListener("DOMContentLoaded", function () {
+    		console.log("Hello from a page with HTML errors");  
+            console.log(globalBroncos);  		
+    	});
+    </script>
+    <style>
+    
+    </style>
+</head>
+<body>
+    <h3>Hello from a page with HTML errors
+        <div>
+        </div>
+
+</body>
+</html>

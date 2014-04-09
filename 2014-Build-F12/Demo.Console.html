@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Console Log Demo</title>
+    <script>
+    	var globalHawks = {
+    		name: "Seattle Seahawks",
+    		owner: "Paul Allen",
+    		found: "1976",
+    		homeStadium:{
+    			name: "CenturyLink Field",
+    			address: {
+					street: "800 Occidental Ave S",
+					city: "Seattle",
+					state: "Washington", 
+					zip: "98134-1200" 
+    			}
+    		},
+    		toString: function() { return ""; } 
+    	};
+
+    	window.addEventListener("DOMContentLoaded", function () {
+    		var logMeObject = document.getElementById("logMeObject");
+    		logMeObject.addEventListener("click", function(){
+    			console.log(globalHawks);
+    		});
+
+    		var logMeArrayOfObject = document.getElementById("logMeArrayOfObject");
+    		logMeArrayOfObject.addEventListener("click", function(e){
+    			console.log(globalHawks, e, e.target);
+    		});
+
+    		var logMeString = document.getElementById("logMeString");
+    		logMeString.addEventListener("click", function(){
+    			console.log("Team %s play at %s", globalHawks.name, globalHawks.homeStadium.name, globalHawks);
+    		});
+    		
+    	});
+    </script>
+    <style>
+    body{
+    	background-color: #fff;
+    }
+    </style>
+</head>
+<body>
+	<button id="logMeObject">Log me an object!</button>
+	<button id="logMeArrayOfObject">Log me lots of objects!</button>
+	<button id="logMeString">Log me a formatted string!</button>
+	<div style="margin-top: 10px"></div>
+	<iframe src="Demo.Console.iframe.html"></iframe>
+	<div style="margin-top: 10px"></div>
+	<a href="Demo.Console.broken.html" target="_blank">A broken page :(</a>
+</body>
+</html>
