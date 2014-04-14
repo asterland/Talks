@@ -1,0 +1,340 @@
+﻿<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>F12 - The IE Developer Tools</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+		<link rel="stylesheet" href="revealJS/css/reveal.min.css" />
+		<link rel="stylesheet" href="revealJS/css/theme/default_kr.css" id="theme"/>
+        
+		<style>
+			.browserLogo{
+				background: none !important;
+				border: none !important;
+				box-shadow: none !important;
+			}
+
+			.sublist li{
+				font-size: 0.5em !important;
+				height: 2em !important;
+				margin: 0;
+				padding: 0;
+			}
+
+			.footnote {
+				font-size: normal !important;
+				position: absolute !important;
+				bottom: 0 !important;
+				left: 20px !important;
+			}
+
+			.demoContainer{
+				margin-top: 80px !important;
+				display: -ms-flexbox;
+				-ms-flex-direction: horizontal;
+			}
+
+			.demoMarkup{
+				text-align: left;
+			}
+
+			.demoPoints{
+				text-align: right;
+			}
+
+			.demoFrame {
+				width: 400px;
+				height: 400px;
+			}
+
+			.ieLogo{
+				position: fixed;
+				top: 10px;
+				right: 10px;
+				width: 129px;
+				height: 40px;
+				background: none !important;
+				border: none !important;
+				box-shadow: none !important;
+
+			}
+
+			.newLogo{
+				position: fixed;
+				top: 60px;
+				right: 10px;
+				width: 129px;
+				height: 80px;
+				background: none !important;
+				border: none !important;
+				box-shadow: none !important;
+
+			}
+		</style>
+	</head>
+
+	<body>
+
+
+		<div class="reveal">
+
+			<div class="slides">
+				<section>
+                    <h2>IE11 개발자 툴</h2>
+					<br />	
+					<img class="browserLogo" src="resources/IEandF12.png"/>
+					<br />
+					<h2>최고의 IE 웹 디버깅 팁앤트릭</h2>
+					<br />
+					<h3><a href="mailto:andy.sterland@microsoft.com">앤디 스털랜드</a> | <a href="http://microsoft.com/ie">마이크로소프트</a></h3>
+					<h4><a href="http://twitter.com/">@AndySterland</a> | <a href="mailto:andy.sterland@microsoft.com">andy.sterland@microsoft.com</a></h4>
+				</section>
+
+				<section>
+					<h2>소개</h2>
+					<ul>
+                        <li>저는 미국 레드몬드의 마이크로소프트에서 F12 개발자 툴의 프로그램 매니저를 맡고 있는 앤디(@AndySterland)입니다.
+                        </li>
+						<li>디버깅을 더 쉽게 도와주는 간단한 팁들에 대해서 초점을 맞추어 설명하려고 합니다.</li>
+						<li>궁금한 점이 있으면 #F12Tools, @IEDevChat 또는 제게 트윗을 해주세요.</li>
+                        <li>
+                            번역(Translation)
+                            <ul class="sublist">
+                                <li>한국어 | <a href="http://www.facebook.com/reaganhwang">황리건</a></li>
+                            </ul>
+                        </li>
+					</ul>
+					<img class="ieLogo" src="resources/iecornerlogo.png"/>
+				</section>
+
+
+				<section>
+					<h2>Tip #0: IE 업데이트하기</h2>
+					<h4>윈도우 업데이트를 통해 IE를 최신버전으로 유지하세요.</h4>
+					<ul>
+						<li>일반적으로 보안 픽스와 큰 영향을 미치는 버그 수정이 포함됩니다.</li>
+						<li>4월 8일 업데이트에서는 처음으로 아래와 같은 기능들이 포함이 됩니다.
+							<ul class="sublist">
+								<li>윈도우 8.1 업데이트 1이라고도 알려져 있지만, 윈7의 IE11에도 적용됩니다.</li>
+								<li>많은 F12 신기능이 추가 됩니다.</li>
+							</ul>
+						</li>
+						<li>슬라이드 화면의 우측 상단에 "new"라고 표시가 있으면 4월 8일 업데이트에 새롭게 추가된 기능입니다.</li>
+					</ul>
+					<img class="ieLogo" src="resources/iecornerlogo.png"/>
+
+				</section>			
+		
+
+				<section>
+					<h2>Tip #1: 내 코드만 디버깅하기</h2>
+					<h4>절대 서드파티 코드를 디버깅하지 마세요.</h4>
+					<div class="demoContainer">
+						<div class="demoMarkup">
+							<iframe class="demoFrame" src="Demo.Debugger.JMC.html"></iframe>
+						</div>
+						<div class="demoPoints">
+							<ul>
+								<li>내가 작성한 코드에서만 Step-in 합니다.</li>
+								<li>내 코드에서만 예외를 잡아 중단합니다.</li>
+								<li>내 다음 코드에서 중단합니다.</li>
+								<li>내 파일을 지정할 수 있습니다:<ul class="sublist">
+									<li>파일 피커, 탭 헤더, MyCode.json</li>
+								</ul>
+							</ul>
+						</div>
+					</div>
+					<img class="ieLogo" src="resources/iecornerlogo.png"/>
+					<img class="newLogo" src="resources/new.png"/>
+				</section>	
+
+				<section>
+					<h2>Tip #2: 소스맵</h2>
+					<h4>Minifier나 TypeScript 같은 언어를 사용하세요? 그럼 소스맵을 만들어서 디버깅을 더 쉽게 하세요.</h4>
+					<div class="demoContainer">
+						<div class="demoMarkup">
+							<iframe class="demoFrame" src="Demo.Debugger.SourceMaps.html"></iframe>
+						</div>
+						<div class="demoPoints">
+							<ul>
+								<li>F12는 이제 소스맵 V3 스펙을 지원합니다!
+									<ul class="sublist">
+										<li>TyppScript, CoffeeScript, Script #등을 위한 신택스 하일라이팅</li>
+										<li>동적으로 허용 및 중단</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<img class="ieLogo" src="resources/iecornerlogo.png"/>
+					<img class="newLogo" src="resources/new.png"/>
+				</section>	
+
+
+				<section>
+					<h2>Tip #3: 트레이스 포인트</h2>
+					<h4>다시 배포할 필요 없는 측정용 코드</h4>
+					<div class="demoContainer">
+						<div class="demoMarkup">
+							<iframe class="demoFrame" src="Demo.Debugger.TracePoints.html"></iframe>
+						</div>
+						<div class="demoPoints">
+							<ul>
+								<li>중단점처럼 동작하지만, 콘솔에 로그를 남깁니다.</li>
+								<li>문자열이나 오브젝트를 로깅하고, 콘솔에서 조사할 수 있습니다.</li>
+								<li>지역 변수에 접근 가능합니다.</li>
+							</ul>
+						</div>
+					</div>
+					<img class="ieLogo" src="resources/iecornerlogo.png"/>
+				</section>	
+
+
+				<section>
+					<h2>Tip #4: 콘솔 메시지 안 놓치기</h2>
+					<h4>"개발자 콘솔 메시지를 항상 저장하기" 기능을 켜세요.</h4>
+					<img class="browserLogo" src="resources/inetcpl-console.png"/>
+					<div>인터넷 옵션 -> 고급 -> 브라우징 -> 개발자 콘솔 메지시...(체크)</div>
+					<a href="Demo.console.broken.html" target="_blank">(고장난 사이트)</a>
+					<img class="ieLogo" src="resources/iecornerlogo.png"/>
+					<img class="newLogo" src="resources/new.png"/>
+				</section>
+
+				<section>
+					<h2>Tip #5: 키보드 단축키</h2>
+					<h4>키보드를 사용하여 생산성을 더 높이세요.</h4>
+					<div class="demoContainer">
+						<div class="demoMarkup">
+							<iframe class="demoFrame" src="Demo.Shell.Keys.html"></iframe>
+						</div>
+						<div class="demoPoints">
+							<ul> 
+								<li>디버거에서 중단됐을 때 <strong>Ctrl + Shift + F5</strong>를 눌러서 중지시키고 페이지를 새로고침 할 수 있습니다.</li>
+								<li>툴 간에 <strong>ctrl + [</strong> 또는 <strong>ctrl + ]</strong>로 이동할 수 있습니다.</li>
+								<li><strong>ctrl + #</strong>를 눌러서 특정 페이지로 이동할 수도 있다는 점을 잊지 마세요.(예, DOM Explorer는 ctrl + 1)</li>
+							</ul>
+						</div>
+					</div>
+					<img class="ieLogo" src="resources/iecornerlogo.png"/>
+					<img class="newLogo" src="resources/new.png"/>
+				</section>	
+				
+				<section>
+					<h2>Tip #6: 체인지 바(Changebars)</h2>
+					<h4>F12의 변경사항을 계속 추척하세요.</h4>
+					<div class="demoContainer">
+						<div class="demoMarkup">
+							<iframe class="demoFrame" src="Demo.DOMExplorer.changebars.html"></iframe>
+						</div>
+						<div class="demoPoints">
+							<ul>
+								<li>툴을 통한 CSS 변경을 모두 추척할 수 있습니다.</li>
+								<li>새로운 "Changes" 탭은 모든 변경사항을 보여줍니다.</li>
+								<li>항목을 원래 상태로 돌릴 수 있습니다.</li>
+							</ul>
+						</div>
+					</div>
+					<img class="ieLogo" src="resources/iecornerlogo.png"/>
+					<img class="newLogo" src="resources/new.png"/>
+				</section>	
+
+				<section>
+					<h2>Tip #7: 헤드업 디스플레이</h2>
+					<h3>실시간으로 퍼포먼스를 모니터링하기</h3>
+					<br />
+					<img class="browserLogo" src="resources/ctrlshiftu.png"/>
+					<br />
+					<br/>
+					<h3>(ctrl + shift + u)</h3>
+					<a href="http://www.cnn.com" target="_blank">(느린 사이트)</a>
+					<img class="ieLogo" src="resources/iecornerlogo.png"/>
+				</section>
+
+				<section>
+					<h2>Tip #8: 코드를 측정하기</h2>
+					<h3>console.* API 를 사용하세요.</h3>
+					<br />
+					
+					<div class="demoContainer">
+						<div class="demoMarkup">
+							<iframe class="demoFrame" src="Demo.Console.instrument.html"></iframe>
+						</div>
+						<div class="demoPoints">
+							<ul>
+								<li>console.time/timeEnd - 시나리오의 시간을 빠르게 측정</li>
+								<li>performance.mark - 프로파일러에서 시나리오를 기술</li>
+								<li>console.takeHeapSnapshot - 스냅샷을 생성함</li>
+							</ul>
+						</div>
+					</div>
+					<img class="ieLogo" src="resources/iecornerlogo.png"/>
+				</section>
+
+				<section>
+					<h2>Tip #9: 엔터프라이즈 모드</h2>
+					<h3>IE를 업데이트하고 내부 사이트가 제대로 동작하게 하기</h3>
+					<br />
+					<img  src="resources/enterprisemode.png"/>
+					<ul>
+						<li>IE8 에뮬레이션 모드에서 사이트를 실행합니다. 
+							<ul class="sublist">
+								<li>IE8의 문서 모드</li>
+								<li>ActiveX 사용 가능</li>
+								<li>구 버전의 JavaScript 엔진</li>
+								<li>일부 보안 향상기능 꺼짐</li>
+							</ul>
+						</li>
+						<li>이 모드에서 실행하는 사이트는 XML과 그룹 정책으로 설정 가능합니다.
+							<ul class="sublist">
+								<li>XML을 설정하기 위해서 Enterprise Mode Site List Manager 툴을 사용하세요.</li>
+								<li>자세한 내용 <a href="http://technet.microsoft.com/library/dn640687.aspx" target="_blank">TechNet</a></li>
+							</ul>
+						</li>
+					</ul>
+					<img class="ieLogo" src="resources/iecornerlogo.png"/>
+					<img class="newLogo" src="resources/new.png"/>
+				</section>
+
+
+				<section>
+					<h2>정리</h2>
+					<br />
+					<ul>
+						<li>지금까지 여러 가지 팁앤트릭을 다루었습니다.</li>
+						<li>그 중에 가장 중요한 팁은 IE11을 업데이트해주시는 것입니다. :)</li>
+					</ul>
+					<br />
+					<br />
+					<br />
+                    <h4><a href="http://twitter.com/">@AndySterland</a></h4>
+                    <h4><a href="mailto:andy.sterland@microsoft.com">andy.sterland@microsoft.com</a></h4>
+					<h4><a target="_blank" href="http://aka.ms/F12Tools">aka.ms/F12Tools</a></h4>
+					<br />
+					<h2>질문 있나요?</h2>
+					<img class="ieLogo" src="resources/iecornerlogo.png"/>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="revealJS/lib/js/head.min.js"></script>
+		<script src="revealJS/js/reveal.min.js"></script>
+
+		<script>
+
+			Reveal.initialize({
+				transition: 'linear',
+				progress: true,
+				history: true,
+				overview: true
+			});
+
+		</script>
+
+	</body>
+</html>
